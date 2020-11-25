@@ -5,6 +5,7 @@ import { formatSlots } from './utils';
 import { FormattedSlot } from './types';
 import { add, format, isAfter, isBefore, sub } from 'date-fns';
 import { SlotButton } from './components/SlotButton';
+import { BACKEND_ENDPOINT, TEXT_CONSTANTS } from './constants';
 
 const App = () => {
   const [error, setError] = useState<string | undefined>();
@@ -14,7 +15,7 @@ const App = () => {
 
   useEffect(() => {
     axios
-      .get('http://localhost:8000/bookable-slots')
+      .get(`${BACKEND_ENDPOINT}/bookable-slots`)
       .then(function (response) {
         setError(undefined);
         const slots = response.data;
@@ -37,7 +38,6 @@ const App = () => {
           >
             &lt;
           </button>
-
           <div style={{ display: 'flex' }}>
             {slots &&
               slots
@@ -61,7 +61,7 @@ const App = () => {
                         onClick={() => setSelectedSlotId(slot.morning.id)}
                         selected={selectedSlotId === slot.morning.id}
                       >
-                        {slot.morning.available ? slot.morning.label : 'FULL'}
+                        {slot.morning.available ? slot.morning.label : TEXT_CONSTANTS.FULL}
                       </SlotButton>
                       <SlotButton
                         disabled={!slot.afternoon.available}
@@ -69,7 +69,7 @@ const App = () => {
                         onClick={() => setSelectedSlotId(slot.afternoon.id)}
                         selected={selectedSlotId === slot.afternoon.id}
                       >
-                        {slot.afternoon.available ? slot.afternoon.label : 'FULL'}
+                        {slot.afternoon.available ? slot.afternoon.label : TEXT_CONSTANTS.FULL}
                       </SlotButton>
                       <SlotButton
                         disabled={!slot.evening.available}
@@ -77,7 +77,7 @@ const App = () => {
                         onClick={() => setSelectedSlotId(slot.evening.id)}
                         selected={selectedSlotId === slot.evening.id}
                       >
-                        {slot.evening.available ? slot.evening.label : 'FULL'}
+                        {slot.evening.available ? slot.evening.label : TEXT_CONSTANTS.FULL}
                       </SlotButton>
                     </div>
                   );
