@@ -8,6 +8,8 @@ django = "*"
 uwsgi = "*"
 djangorestframework = "*"
 djangorestframework-camel-case = "*"
+django-cors-headers = "*"
+python-dateutil = "*"
 
 [requires]
 python_version = "3.8"

@@ -6,6 +6,9 @@ class SlotShape(BaseModel):
     start_time = models.TimeField()
     end_time = models.TimeField()
 
+    def __str__(self):
+        return f"{self.label}"
+
 class Slot(BaseModel):
     total_capacity = models.IntegerField(default=10)
     booked_capacity = models.IntegerField(default=0)
@@ -15,5 +18,9 @@ class Slot(BaseModel):
     def get_remaining_slots(self):
         return self.total_capacity - self.booked_capacity
 
+    @property
     def is_slot_full(self):
         return self.booked_capacity == self.total_capacity
+
+    def __str__(self):
+        return f"{self.date} - {self.slot_shape.label}"
