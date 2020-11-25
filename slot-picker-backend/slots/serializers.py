@@ -19,6 +19,7 @@ class BookableSlotSerializer(serializers.ModelSerializer):
     class Meta:
         model = Slot
         fields = (
+            "id",
             "date",
             "total_capacity",
             "booked_capacity",
@@ -26,6 +27,7 @@ class BookableSlotSerializer(serializers.ModelSerializer):
             "is_slot_full"
         )
         read_only_fields = (
+            "id",
             "date",
             "total_capacity",
             "is_slot_full"

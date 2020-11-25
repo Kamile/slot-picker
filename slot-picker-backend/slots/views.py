@@ -6,10 +6,6 @@ import datetime
 from .models import Slot
 from .serializers import BookableSlotSerializer, SlotSerializer
 
-
-def index(request):
-    return HttpResponse("Hello from slots.")
-
 class SlotViewSet(viewsets.ModelViewSet):
     queryset = Slot.objects.all()
     serializer_class = SlotSerializer
