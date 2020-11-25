@@ -6,6 +6,7 @@ export const SlotButton = styled.button<{
   margin-bottom: 5px;
   background-color: white;
   height: 60px;
+  flex: 1;
   ${(p) =>
     p.selected &&
     css`
